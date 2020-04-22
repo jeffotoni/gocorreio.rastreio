@@ -104,25 +104,58 @@ $ curl -i http://localhost:8085/api/v1/PX521577722BR
 
 ```
 
-## out
-```bash
-
-$ {}
-
-```
-
-## Saida Json
+## Saida Json (erro)
 ```json
 
-	{
-		"cidade":"",
-		"uf":"",
-		"logradouro":"",
-		"bairro":""
-	}
+{
+   "Text":"",
+   "Versao":"2.0",
+   "Qtd":"1",
+   "Objeto":
+   {
+      "Text":"",
+      "Numero":"PX521577733BC",
+      "Erro":"Objeto não encontrado na base de dados dos Correios.",
+      "Sigla":"",
+      "Nome":"",
+      "Categoria":"",
+      "Evento":null
+   }
+}
 
 ```
 
+## Saida Json (sucesso)
 
+```json
 
+{
+   "Text":"",
+   "Versao":"2.0",
+   "Qtd":"1",
+   "Objeto":{
+      "Text":"",
+      "Numero":"PX521577722BR",
+      "Erro":"",
+      "Sigla":"PX",
+      "Nome":"ENCOMENDA PAC (ETIQUETA LOGICA) ",
+      "Categoria":"ENCOMENDA PAC",
+      "Evento":[
+         {
+            "Text":"",
+            "Tipo":"PO",
+            "Status":"01",
+            "Data":"29/11/2019",
+            "Hora":"17:31",
+            "Descricao":"Objeto postado",
+            "Local":"AGF DOUTOR JOAO MENDES",
+            "Codigo":"01502994",
+            "Cidade":"SAO PAULO",
+            "Uf":"SP"
+         }
+      ]
+   }
+}
+
+```
 

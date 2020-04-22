@@ -41,16 +41,11 @@ func NewRequestWithContextCorreioRastreio(ctx context.Context, cancel context.Ca
 	if err == nil {
 		c := obj.Body.BuscaEventosResponse.Return
 
-		fmt.Println(c)
-
-		b, err := json.Marshal(obj)
+		b, err := json.Marshal(c)
 		if err == nil {
 			chResult <- Result{Body: b}
 			cancel()
 		}
 	}
-
-	fmt.Println(err)
-
 	return
 }

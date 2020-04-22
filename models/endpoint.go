@@ -8,7 +8,7 @@ type end struct {
 }
 
 var Endpoints = []end{
-	{"POST", "correio", "",
+	{"POST", "correio", "http://webservice.correios.com.br:80/service/rastro",
 		`<Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/">
 		    <Body>
 		        <buscaEventos xmlns="http://resource.webservice.correios.com.br/">

@@ -20,31 +20,33 @@ type Rastreio struct {
 		BuscaEventosResponse struct {
 			Text   string `xml:",chardata"`
 			Ns2    string `xml:"ns2,attr"`
-			Return struct {
-				Text   string `xml:",chardata"`
-				Versao string `xml:"versao"`
-				Qtd    string `xml:"qtd"`
-				Objeto struct {
-					Text      string `xml:",chardata"`
-					Numero    string `xml:"numero"`
-					Erro      string `xml:"erro"`
-					Sigla     string `xml:"sigla"`
-					Nome      string `xml:"nome"`
-					Categoria string `xml:"categoria"`
-					Evento    struct {
-						Text      string `xml:",chardata"`
-						Tipo      string `xml:"tipo"`
-						Status    string `xml:"status"`
-						Data      string `xml:"data"`
-						Hora      string `xml:"hora"`
-						Descricao string `xml:"descricao"`
-						Local     string `xml:"local"`
-						Codigo    string `xml:"codigo"`
-						Cidade    string `xml:"cidade"`
-						Uf        string `xml:"uf"`
-					} `xml:"evento"`
-				} `xml:"objeto"`
-			} `xml:"return"`
+			Return Return `xml:"return"`
 		} `xml:"buscaEventosResponse"`
 	} `xml:"Body"`
+}
+
+type Return struct {
+	Text   string `xml:",chardata"`
+	Versao string `xml:"versao"`
+	Qtd    string `xml:"qtd"`
+	Objeto struct {
+		Text      string `xml:",chardata"`
+		Numero    string `xml:"numero"`
+		Erro      string `xml:"erro"`
+		Sigla     string `xml:"sigla"`
+		Nome      string `xml:"nome"`
+		Categoria string `xml:"categoria"`
+		Evento    []struct {
+			Text      string `xml:",chardata"`
+			Tipo      string `xml:"tipo"`
+			Status    string `xml:"status"`
+			Data      string `xml:"data"`
+			Hora      string `xml:"hora"`
+			Descricao string `xml:"descricao"`
+			Local     string `xml:"local"`
+			Codigo    string `xml:"codigo"`
+			Cidade    string `xml:"cidade"`
+			Uf        string `xml:"uf"`
+		} `xml:"evento"`
+	} `xml:"objeto"`
 }
