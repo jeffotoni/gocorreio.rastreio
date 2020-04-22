@@ -1,9 +1,7 @@
 package handler
 
 import (
-	"errors"
 	"github.com/jeffotoni/gocorreio.rastreio/pkg/rastreio"
-	"github.com/jeffotoni/gocorreio.rastreio/pkg/util"
 	"net/http"
 	"strings"
 )
@@ -23,7 +21,7 @@ func Rastreio(w http.ResponseWriter, r *http.Request) {
 
 	etiqueta := strings.Split(r.URL.Path[2:], "/")[2]
 	if len(etiqueta) <= 0 {
-		http.Error(w, errors.New("Codigo de rastreio invalido"), http.StatusBadRequest)
+		http.Error(w, "Codigo de rastreio invalido", http.StatusBadRequest)
 		return
 	}
 

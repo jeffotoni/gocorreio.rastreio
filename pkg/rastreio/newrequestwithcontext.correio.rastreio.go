@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"context"
 	"crypto/tls"
-	//"encoding/json"
+	"encoding/json"
 	"encoding/xml"
 	"fmt"
 	"github.com/jeffotoni/gocorreio.rastreio/models"
@@ -36,16 +36,18 @@ func NewRequestWithContextCorreioRastreio(ctx context.Context, cancel context.Ca
 	}
 	defer response.Body.Close()
 
-	rastreio := new(models.Rastreio)
-	err = xml.NewDecoder(response.Body).Decode(rastreio)
+	obj := new(models.Rastreio)
+	err = xml.NewDecoder(response.Body).Decode(obj)
 	if err == nil {
-		c := rastreio.Body.BuscaEventosResponse.Return
+		c := obj.Body.BuscaEventosResponse.Return
+
 		fmt.Println(c)
 
-		//if err == nil {
-		chResult <- Result{Body: c}
-		cancel()
-		//}
+		b, err := json.Marshal(obj)
+		if err == nil {
+			chResult <- Result{Body: b}
+			cancel()
+		}
 	}
 
 	fmt.Println(err)
