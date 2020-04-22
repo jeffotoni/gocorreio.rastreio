@@ -1,10 +1,11 @@
 package main
 
 import (
-	"github.com/jeffotoni/gocorreio.rastreio/config"
-	"github.com/jeffotoni/gocorreio.rastreio/handlers"
 	"log"
 	"net/http"
+	
+	"github.com/jeffotoni/gocorreio.rastreio/config"
+	"github.com/jeffotoni/gocorreio.rastreio/handlers"
 )
 
 func main() {
