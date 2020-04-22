@@ -19,8 +19,6 @@ jobs:
         go-version: ${{ matrix.go-version }}
     - name: Checkout code
       uses: actions/checkout@v2
-    - name: Linter
-      run: curl -sfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh| sh -s v1.21.0 && go get -u golang.org/x/lint/golint &&  [ -z `go env GOPATH`/bin/golint ./... | grep ".go" ] && true || false && [ -z `gofmt -l . | grep ".go"` ] && true || false
     - name: Security
       run: go get github.com/securego/gosec/cmd/gosec; `go env GOPATH`/bin/gosec ./...
     - name: Tests
