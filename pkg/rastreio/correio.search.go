@@ -2,9 +2,9 @@ package rastreio
 
 import (
 	"context"
-	"github.com/jeffotoni/gocorreio.rastreioconfig"
-	"github.com/jeffotoni/gocorreio.rastreiomodels"
-	"github.com/jeffotoni/gocorreio.rastreioservice/ristretto"
+	"github.com/jeffotoni/gocorreio.rastreio/config"
+	"github.com/jeffotoni/gocorreio.rastreio/models"
+	"github.com/jeffotoni/gocorreio.rastreio/service/ristretto"
 	"time"
 )
 
