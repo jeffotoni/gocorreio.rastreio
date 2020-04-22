@@ -1,10 +1,10 @@
-package codigoRastreio
+package rastreio
 
 import (
 	"context"
-	"github.com/jeffotoni/gocodigoRastreio/config"
-	"github.com/jeffotoni/gocodigoRastreio/models"
-	"github.com/jeffotoni/gocodigoRastreio/service/ristretto"
+	"github.com/jeffotoni/gocorreio.rastreioconfig"
+	"github.com/jeffotoni/gocorreio.rastreiomodels"
+	"github.com/jeffotoni/gocorreio.rastreioservice/ristretto"
 	"time"
 )
 
