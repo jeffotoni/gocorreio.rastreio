@@ -1,0 +1,22 @@
+version: '3.5'
+
+services:
+  gocorreio.rastreio:
+    image: jeffotoni/gocorreio.rastreio
+    container_name: gocorreio.rastreio
+    hostname: gocorreio.rastreio
+    domainname: gocorreio.rastreio.local.com
+    environment:
+      - "TZ=America/Sao_Paulo"
+      - "API_ENV=prod"
+    networks:
+        guulawork:
+           aliases:
+              - gocorreio.rastreio.local.com
+    ports:
+      - 8084:8084
+    restart: always
+
+networks:
+  guulawork:
+      driver: bridge
