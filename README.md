@@ -8,7 +8,7 @@ O server é extremamente rápido, e usa cache em memória ele está configurado 
 
 gocorreio.rastreio também poderá ser usado como Lib, ou seja você irá conseguir fazer um import em seu pkg/rastreio  e fazer a chamada direto do seu método em seu código.
 
-## Usar como Lib
+## Usar como Lib Search v1
 ```go
 
 package main
@@ -23,6 +23,26 @@ func main() {
 	result, err := rastreio.Search("PX521577722BR")
 	fmt.Println(err)
 	fmt.Println(result)
+}
+
+```
+
+## Usar como Lib Search v2
+```go
+
+package main
+
+import (
+   "fmt"
+   "github.com/jeffotoni/gocorreio.rastreio/pkg/rastreio"
+)
+
+func main() {
+
+   //usuario, senha, etiqueta, tipo e resultado
+   result, err := rastreio.Search2("ECT","SRO","PX521577722BR","L", "T")
+   fmt.Println(err)
+   fmt.Println(result)
 }
 
 ```
@@ -97,10 +117,18 @@ gocorreio.rastreio   /gocorreio.rastreio    Up      0.0.0.0:8085->8085/tcp
 
 ```
 
-## Executando sua API
+## Executando sua API V1
 ```bash
 
 $ curl -i http://localhost:8085/api/v1/PX521577722BR
+
+```
+
+
+## Executando sua API V2
+```bash
+
+$ curl -i -XGET "http://localhost:8085/api/v2/?usuario=ECT&senha=SRO&etiqueta=PX521577722BR&tipo=L&resultado=T"
 
 ```
 
