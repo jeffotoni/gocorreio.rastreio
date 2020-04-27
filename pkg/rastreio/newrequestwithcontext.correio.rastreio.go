@@ -11,11 +11,11 @@ import (
 	"net/http"
 )
 
-func NewRequestWithContextCorreioRastreio(ctx context.Context, cancel context.CancelFunc, rastreio, source, method, endpoint,
+func NewRequestWithContextCorreioRastreio(ctx context.Context, cancel context.CancelFunc, usuario, senha, rastreio, tipo, resultado, source, method, endpoint,
 	payload string, chResult chan<- Result) {
 
 	var err error
-	payload = fmt.Sprintf(payload, rastreio)
+	payload = fmt.Sprintf(payload, usuario, senha, tipo, resultado, rastreio)
 	req, err := http.NewRequestWithContext(ctx, method, endpoint, bytes.NewReader([]byte(payload)))
 	if err != nil {
 		return

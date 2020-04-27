@@ -12,10 +12,10 @@ var Endpoints = []end{
 		`<Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/">
 		    <Body>
 		        <buscaEventos xmlns="http://resource.webservice.correios.com.br/">
-		            <usuario xmlns="">ECT</usuario>
-		            <senha xmlns="">SRO</senha>
-		            <tipo xmlns="">L</tipo>
-		            <resultado xmlns="">T</resultado>
+		            <usuario xmlns="">%s</usuario>
+		            <senha xmlns="">%s</senha>
+		            <tipo xmlns="">%s</tipo>
+		            <resultado xmlns="">%s</resultado>
 		            <lingua xmlns="">101</lingua>
 		            <objetos xmlns="">%s</objetos>
 		        </buscaEventos>

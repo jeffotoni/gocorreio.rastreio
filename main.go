@@ -10,6 +10,8 @@ import (
 func main() {
 
 	mux := http.NewServeMux()
+	mux.HandleFunc("/api/v2/", handler.Rastreio2)
+	mux.HandleFunc("/api/v2", handler.Rastreio2)
 	mux.HandleFunc("/api/v1/", handler.Rastreio)
 	mux.HandleFunc("/api/v1", handler.NotFound)
 	mux.HandleFunc("/", handler.NotFound)

@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-func Search(codigoRastreio string) (string, error) {
+func Search2(usuario, senha, codigoRastreio, tipo, resultado string) (string, error) {
 
 	jsoncodigoRastreio := ristretto.Get(codigoRastreio)
 	if len(jsoncodigoRastreio) > 0 {
@@ -18,11 +18,6 @@ func Search(codigoRastreio string) (string, error) {
 	ctx := context.Background()
 	ctx, cancel := context.WithCancel(ctx)
 	defer cancel()
-
-	var usuario string = "ECT"
-	var senha string = "SRO"
-	var tipo string = "L"
-	var resultado string = "T"
 
 	for _, e := range models.Endpoints {
 		endpoint := e.Url
