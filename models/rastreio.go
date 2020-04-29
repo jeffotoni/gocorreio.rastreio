@@ -26,10 +26,11 @@ type Rastreio struct {
 }
 
 type Return struct {
-	Text   string `xml:",chardata"`
-	Versao string `xml:"versao"`
-	Qtd    string `xml:"qtd"`
-	Objeto struct {
+	Text       string `xml:",chardata"`
+	VersionApp string `xml:"versao_app"`
+	Versao     string `xml:"versao"`
+	Qtd        string `xml:"qtd"`
+	Objeto     struct {
 		Text      string `xml:",chardata"`
 		Numero    string `xml:"numero"`
 		Erro      string `xml:"erro"`

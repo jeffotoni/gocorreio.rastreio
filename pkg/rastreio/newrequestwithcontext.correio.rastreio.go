@@ -40,6 +40,7 @@ func NewRequestWithContextCorreioRastreio(ctx context.Context, cancel context.Ca
 	err = xml.NewDecoder(response.Body).Decode(obj)
 	if err == nil {
 		c := obj.Body.BuscaEventosResponse.Return
+		c.VersionApp = "0.1.0"
 
 		b, err := json.Marshal(c)
 		if err == nil {
