@@ -5,6 +5,7 @@ import (
 	"github.com/jeffotoni/gocorreio.rastreio/config"
 	"github.com/jeffotoni/gocorreio.rastreio/models"
 	"github.com/jeffotoni/gocorreio.rastreio/service/ristretto"
+	"runtime"
 	"time"
 )
 
@@ -14,6 +15,8 @@ func Search2(usuario, senha, codigoRastreio, tipo, resultado string) (string, er
 	if len(jsoncodigoRastreio) > 0 {
 		return jsoncodigoRastreio, nil
 	}
+
+	runtime.GOMAXPROCS(runtime.NumCPU())
 
 	ctx := context.Background()
 	ctx, cancel := context.WithCancel(ctx)
