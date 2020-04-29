@@ -1,4 +1,4 @@
-# gocorreio.rastreio
+# Rastreio gocorreio.rastreio
 
 Um simples pacote para buscar nos correios os eventos de postagem, o rastreamento de pedidos postados do seu pedido.
 
