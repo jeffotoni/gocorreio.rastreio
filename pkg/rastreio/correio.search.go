@@ -40,7 +40,7 @@ func Search(codigoRastreio string) (string, error) {
 
 	select {
 	case result := <-chResult:
-		ristretto.Set(codigoRastreio, string(result.Body))
+		ristretto.SetTTL(codigoRastreio, string(result.Body), time.Duration(time.Minute*5))
 		return string(result.Body), nil
 
 	case <-time.After(time.Duration(5) * time.Second):
