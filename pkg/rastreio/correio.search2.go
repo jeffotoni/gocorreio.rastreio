@@ -2,21 +2,22 @@ package rastreio
 
 import (
 	"context"
+	"runtime"
+	"time"
+
 	"github.com/jeffotoni/gocorreio.rastreio/config"
 	"github.com/jeffotoni/gocorreio.rastreio/models"
 	"github.com/jeffotoni/gocorreio.rastreio/service/ristretto"
-	"runtime"
-	"time"
 )
 
 func Search2(usuario, senha, codigoRastreio, tipo, resultado string) (string, error) {
-
+	var chResult = make(chan Result, len(models.Endpoints))
 	jsoncodigoRastreio := ristretto.Get(codigoRastreio)
 	if len(jsoncodigoRastreio) > 0 {
 		return jsoncodigoRastreio, nil
 	}
 
-	runtime.GOMAXPROCS(runtime.NumCPU())
+	runtime.GOMAXPROCS(config.NumCPU)
 
 	ctx := context.Background()
 	ctx, cancel := context.WithCancel(ctx)
@@ -36,10 +37,10 @@ func Search2(usuario, senha, codigoRastreio, tipo, resultado string) (string, er
 
 	select {
 	case result := <-chResult:
-		ristretto.SetTTL(codigoRastreio, string(result.Body), time.Duration(time.Minute*5))
+		ristretto.SetTTL(codigoRastreio, string(result.Body), time.Duration(config.TTlCache)*time.Second)
 		return string(result.Body), nil
 
-	case <-time.After(time.Duration(5) * time.Second):
+	case <-time.After(time.Duration(config.TimeOutSearch) * time.Second):
 		cancel()
 	}
 

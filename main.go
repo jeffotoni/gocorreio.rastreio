@@ -3,13 +3,12 @@ package main
 import (
 	"log"
 	"net/http"
-	
+
 	"github.com/jeffotoni/gocorreio.rastreio/config"
-	"github.com/jeffotoni/gocorreio.rastreio/handlers"
+	handler "github.com/jeffotoni/gocorreio.rastreio/handlers"
 )
 
 func main() {
-
 	mux := http.NewServeMux()
 	mux.HandleFunc("/api/v2/", handler.Rastreio2)
 	mux.HandleFunc("/api/v2", handler.Rastreio2)

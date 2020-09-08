@@ -2,15 +2,16 @@ package rastreio
 
 import (
 	"context"
+	"runtime"
+	"time"
+
 	"github.com/jeffotoni/gocorreio.rastreio/config"
 	"github.com/jeffotoni/gocorreio.rastreio/models"
 	"github.com/jeffotoni/gocorreio.rastreio/service/ristretto"
-	"runtime"
-	"time"
 )
 
 func Search(codigoRastreio string) (string, error) {
-
+	var chResult = make(chan Result, len(models.Endpoints))
 	jsoncodigoRastreio := ristretto.Get(codigoRastreio)
 	if len(jsoncodigoRastreio) > 0 {
 		return jsoncodigoRastreio, nil
